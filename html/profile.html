@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile — Digilians</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+    <aside class="sidebar">
+        <a href="logo.html" class="brand" style="text-decoration: none; cursor: pointer;">Digilians</a>
+        <nav class="side-nav">
+            <a class="side-link" href="agenda.html">Agenda</a>
+            <a class="side-link" href="agentic-ai.html">Agentic AI</a>
+            <a class="side-link" href="../index.html">Projects Statistics</a>
+            <div class="side-section">Domains</div>
+            <a class="side-link" href="ai.html">Artificial Intelligence</a>
+            <a class="side-link" href="software.html">Software Development</a>
+            <a class="side-link" href="data-analytics.html">Data Analytics</a>
+            <a class="side-link" href="infra-security.html">Infrastructure & Security</a>
+            <a class="side-link" href="digital-art.html">Digital Art</a>
+            <a class="side-link" href="applied-tech.html">Applied Technologies</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header class="topbar">
+            <h1 class="page-title" id="profileName">Profile</h1>
+            <nav class="top-nav" aria-label="Profile Navigation">
+                <a href="../index.html" class="top-link">All Profiles</a>
+            </nav>
+        </header>
+
+        <section class="section">
+            <div class="section-head">
+                <h2>Projects</h2>
+            </div>
+            <div id="projectsList" class="grid"></div>
+        </section>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            renderProfileDetail({ mountId: 'projectsList' });
+        });
+    </script>
+</body>
+
+</html>

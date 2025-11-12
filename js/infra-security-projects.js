@@ -1,0 +1,252 @@
+// Infrastructure & Security Projects Data
+const infraSecurityProjects = {
+
+    "Cisco Network Administration Professional": [
+        {
+            title: "Secure Enterprise HQ with 802.1X/NAC",
+            idea: "Configure a secure corporate headquarters network. All wired and wireless access for user and server endpoints is authenticated using 802.1X, configured on Cisco Network Access Control (NAC) and Cisco Wireless LAN Controller (WLC).",
+            objective: "To build a highly secure, **object-driven network** that enforces 802.1X/NAC (VLANs) dynamically based on user and device identity. This involves configuring access control policies using Cisco Network Access Control (NAC) and WLC. The project emphasizes establishing a secure, fully segmented environment.",
+            tools: ["Cisco IOS/IOS-XE", "Cisco WLC", "NPS as RADIUS Server", "Active Directory", "Secure boot", "Trust anchor module"],
+        },
+        {
+            title: "Multi-Tenant Data Center with VRPF",
+            idea: "Design a secure, multi-tenant network for a Data Center (DC). Separate traffic for different customers/tenants using Virtual Routing and Forwarding (VRF) and sub-interfaces on routing/switching devices. Configure OSPF as the Interior Gateway Protocol (IGP).",
+            objective: "To configure a secure, **multi-tenant, virtualized Data Center** network using VRF and sub-interfaces to isolate traffic between tenants. This involves designing the core network infrastructure, configuring the routing and switching devices, and implementing the VRF technology. The final goal is to ensure a secure, fully isolated environment for multiple customers on the same physical network.",
+            tools: ["Cisco WLC", "VRF-Lite", "OSPF", "Routing/Switching concepts"],
+        },
+        {
+            title: "Enterprise Edge with Dual-Homed BGP",
+            idea: "Design the edge network for a corporation that has two different ISP connections for internet connectivity. Configure an Exterior Gateway Protocol (BGP) with two separate Public Autonomous System Numbers (ASNs).",
+            objective: "To configure a redundant, dual-homed **Enterprise Edge** network using BGP for high availability and failover. This involves establishing BGP sessions with two separate Internet Service Providers (ISPs) to ensure external connectivity. The configuration must include advanced routing policies and path manipulation for optimal traffic routing.",
+            tools: ["Cisco IOS/IOS-XE", "BGP", "ASNs", "Route manipulation", "Security Control Lists (ACLs)"],
+        },
+        {
+            title: "Hybrid Active Directory & Linux Integration",
+            idea: "Build a corporate network where Windows Active Directory (AD) is the central identity source. Deploy a RADIUS server (NPS) and integrate it with AD to allow users to log in to Linux devices using AD credentials.",
+            objective: "To create a seamless, **hybrid corporate identity system** that unifies Windows and Linux login using AD credentials. This involves configuring the RADIUS server to authenticate users against Active Directory, while also managing GPO for AD and Linux systems. The goal is to enforce single sign-on (SSO) and consistent security policies across all endpoint types.",
+            tools: ["Windows AD + GPOs", "NPS as RADIUS server", "Linux/Ubuntu server setup", "Network infrastructure setup"],
+        },
+        {
+            title: "Secure Scalable WAN with DMVPN",
+            idea: "Build a secure, scalable Wide Area Network (WAN) using Dynamic Multipoint Virtual Private Network (DMVPN). A central hub router supports two spoke routers at branch offices. The DMVPN network uses OSPF as the Interior Gateway Protocol (IGP).",
+            objective: "To create a secure, **scalable Wide Area Network (WAN)** that supports remote office connectivity with minimal configuration overhead. This involves deploying the Dynamic Multipoint VPN (DMVPN) topology to ensure efficient, non-branch-to-branch communication. The final project demonstrates complexity management using multi-protocol network design (DMVPN, OSPF, IPSec).",
+            tools: ["Cisco IOS-XE/IOS", "DMVPN", "OSPF", "IPsec VPNs", "Hub/Spoke topology", "Networking Simulation"],
+        },
+        {
+            title: "Advanced Enterprise Wireless (WPA3-Enterprise)",
+            idea: "Deploy a highly secure, enterprise wireless network. The network uses WPA3-Enterprise and integrates with a Windows AD server and NPS RADIUS server.",
+            objective: "To deploy a highly secure, **enterprise wireless network** that leverages WPA3-Enterprise to prevent external wireless access. This involves integrating the wireless infrastructure (WLC and Access Points) with a Windows AD server and NPS RADIUS server for centralized user authentication. The primary focus is on implementing strong, identity-based access security.",
+            tools: ["Cisco WLC + APs", "Windows AD Server", "NPS RADIUS Server", "WPA3-Enterprise"],
+        },
+        {
+            title: "Dual-Stack Automation (Ansible & PowerShell)",
+            idea: "Automate dual-stack IP address configuration and routing on Cisco routers and switches. Write an Ansible playbook and a PowerShell script for configuration management and verification.",
+            objective: "To demonstrate proficiency in **network automation** by using the right tool for the right job, including Ansible and PowerShell. This involves writing Ansible playbooks to configure network devices for dual-stack (IPv4/IPv6) connectivity and dynamic routing. The project emphasizes idempotency and verification of configuration states using the command line.",
+            tools: ["Ansible (router + switch roles)", "PowerShell/Python Scripts", "Cisco IOS/IOS-XE", "IP address configuration"],
+        },
+        {
+            title: "Enterprise Disaster Recovery (DR) Site",
+            idea: "Deploy a primary Data Center (DC) and a secondary Disaster Recovery (DR) site. Connect them using an IPsec VPN (IPsec VPN) tunnel. Implement OSPF/EIGRP/BGP to ensure traffic forwarding and routing between the two sites.",
+            objective: "To implement a **Disaster Recovery (DR) infrastructure** that protects enterprise data and ensures service continuity in the event of a primary site outage. This involves configuring a secure, reliable connection between the DC and DR site using IPsec VPN tunnels. The project focuses on implementing robust routing protocols (OSPF/EIGRP/BGP) and backup DNS/DHCP services to support failover scenarios.",
+            tools: ["Cisco IOS/IOS-XE", "IPsec VPN", "OSPF/EIGRP/BGP", "Windows AD DS replication", "Backup DNS/DHCP"],
+        },
+        {
+            title: "Healthcare (HIPAA) Network with MAB",
+            idea: "Build a hospital network with strict segmentation. Implement VLANs for 'Medical Devices (IoT)', 'Patient Records', and 'Staff'. Use 802.1X/NAC (MAB) with Cisco's security appliances to check endpoints against a list of approved devices.",
+            objective: "To implement a **multi-layered security approach** (802.1X/NAC and MAB) to control access to the healthcare network rigorously. This involves creating granular VLAN segments to isolate sensitive 'Patient Records' and 'Medical Devices' traffic from staff access. The objective is to ensure HIPAA compliance and robust security by controlling all device access (wired and wireless).",
+            tools: ["Cisco IOS/IOS-XE", "VLANs (802.1X, MAB)", "NPS/RADIUS", "Firewall rules"],
+        },
+        {
+            title: "Automated AD User Onboarding Portal",
+            idea: "Build a simple, three-tier web form on the front-end (e.g., a basic .php form). This form will collect a new employee's name and department. When submitted, the back-end (automated) creates a new Active Directory (AD) user, sets the default password, and applies the correct PowerShell script (or equivalent) to set up group and OUs.",
+            objective: "To integrate a **Linux web service** with **Windows Active Directory** to automate the task of new user onboarding. This involves using PowerShell/Python scripts to create a user, set the initial password, and apply necessary group memberships and organizational units (OUs). The final outcome is a deployable solution that drastically reduces manual overhead for IT administrators.",
+            tools: ["Linux (RHEL124) + PHP", "PowerShell/Python", "Active Directory", "Web form triggers"],
+        },
+    ],
+    "Network Administration Specialist": [
+        {
+            title: "Secure Retail Chain WAN",
+            idea: "Design and configure the network for a retail company with a corporate headquarters and multiple remote branches. Implement site-to-site VPNs (IPSec) connecting all branches to HQ. Configure dynamic segmentation using VLANs, ACLs, and firewalls on Cisco devices.",
+            objective: "To design and implement a **highly secure, dynamic, and multi-site WAN** to manage sensitive payment data. This involves configuring IPsec site-to-site VPNs for secure branch connectivity to headquarters. The final project emphasizes integrating dynamic segmentation (VLANs, ACLs, firewall) policies tailored to prevent data theft.",
+            tools: ["Cisco Routers (VPN, VLANs)", "Cisco Switches", "Site-to-site IPsec VPNs", "VLANs/ACLs", "Firewall services"],
+        },
+        {
+            title: "Resilient Hospital Network (HIPAA Compliant)",
+            idea: "Design a hospital network using a three-tier architecture. Deploy Red Hat (RH124) servers to host a customized patient records database and implement Linux disk redundancy (LVM).",
+            objective: "To build a **highly redundant and resilient network infrastructure** that ensures continuous access to medical systems and patient data. This involves implementing link redundancy using technologies like EtherChannel or VSS, and ensuring all database systems have disk redundancy. The key challenge is meeting strict HIPAA compliance requirements for sensitive patient records.",
+            tools: ["Cisco Switches (EtherChannel, VLANs)", "Cisco Routers", "DHCP/DNS Server", "Linux Red Hat Server", "LVM Redundancy"],
+        },
+        {
+            title: "University Campus 'Bring Your Own Device' (BYOD) Network",
+            idea: "Implement a network for a university campus with high-density wireless. Configure separate SSIDs/VLANs for Students, Faculty, and Guests. Deploy NPS (RADIUS) integrated with WLC and Active Directory.",
+            objective: "To design and deploy a **scalable, multi-tiered network** that securely manages and authenticates thousands of users with role-based access. This involves setting up separate Service Set Identifiers (SSIDs) and Virtual Local Area Networks (VLANs) for students, faculty, and guests, with separate access policies. The primary goal is integrating the NPS RADIUS server with the WLC and Active Directory for centralized authentication.",
+            tools: ["Cisco WLC + AP (802.1X, WACL)", "NPS (RADIUS)", "Active Directory", "VLANs/SSIDs"],
+        },
+        {
+            title: "Secure Banking Branch Office VPN",
+            idea: "Build a corporate network where Windows Active Directory is the central identity source. Deploy a Red Hat (RH124) server running a Secure VPN service (OpenVPN) and configure it to allow SSH logins using AD user credentials.",
+            objective: "To create a **seamless, hybrid-OS environment** that enables centralized management, strong segmentation, and identity enforcement. This involves integrating AD user credentials for SSH login on Linux servers via a secure VPN/tunnel, maintaining strict security standards. The final project focuses on applying granular access controls (ACLs) to applications and network segments.",
+            tools: ["Cisco Routers (IPsec VPN, VLANs)", "Red Hat (RH124) VPN", "Windows AD", "Linux/Ubuntu setup", "ACLs for service setup"],
+        },
+        {
+            title: "Smart Factory 'Industry 4.0' Network Segmentation",
+            idea: "Design a network for a factory that combines a corporate (IT) network and a factory floor (OT - Operational Technology) network. Create a firewall separating the two segments, applying strict access control rules (ACLs) to servers and controllers.",
+            objective: "To deploy a **segmented network design** that integrates corporate (IT) and operational technology (OT) environments, ensuring safety and compliance. This involves deploying a strong firewall to isolate the two segments and applying strict access control rules (ACLs) to prevent lateral movement. The primary goal is to protect sensitive corporate data and factory controllers from external compromise.",
+            tools: ["Cisco VLANs", "Firewalls", "ACLs", "DMZ configuration", "Industrial control network security"],
+        },
+        {
+            title: "Secure Scalable WAN with DMVPN",
+            idea: "Build a small ISP network core. Implement OSPF (OSI Reference Model) as the Interior Gateway Protocol (IGP) to provide interior access to customer VLANs. Configure Network Address Translation (NAT) and Port Address Translation (PAT) to provide essential customer services.",
+            objective: "To build a **scalable, multi-tenant network core** capable of servicing customer VLANs and managing internet services efficiently. This involves configuring OSPF as the IGP for interior routing and deploying NAT/PAT for customer service. The project demonstrates dynamic routing protocols and address translation for managing internet services.",
+            tools: ["Cisco Routers (OSPF, NAT)", "VLANs for customers", "Red Hat (RH124) server", "OSPF/EIGRP protocols"],
+        },
+        {
+            title: "Smart Wireless Internet Service Provider (WISP) Core",
+            idea: "Build a small ISP network core. Implement OSPF (OSI Reference Model) as the Interior Gateway Protocol (IGP) to provide interior access to customer VLANs. Configure Network Address Translation (NAT) and Port Address Translation (PAT) to provide essential customer services.",
+            objective: "To build a **scalable, multi-tenant network core** capable of servicing customer VLANs and managing internet services efficiently. This involves configuring OSPF as the IGP for interior routing and deploying NAT/PAT for customer service. The project demonstrates dynamic routing protocols and address translation for managing internet services.",
+            tools: ["Cisco Routers (OSPF, NAT)", "VLANs for customers", "Red Hat (RH124) server", "OSPF/EIGRP protocols"],
+        },
+        {
+            title: "Enterprise Hybrid Cloud Connectivity",
+            idea: "Connect a corporate office using L2TP/IPsec VPN (L2TP/IPsec VPN) tunnel to a 'cloud-based' (simulated by another router network) service provider. This allows the corporate office to securely access a 'database' server on the cloud.",
+            objective: "To create a **reliable and private on-premise to cloud connection** to securely access cloud-based services. This involves configuring the L2TP/IPsec VPN tunnel between the corporate office and the cloud service provider network. The project ensures data confidentiality and secure communication between the corporate office and the cloud-based database server.",
+            tools: ["Cisco Routers (VPN, routing)", "Red Hat (RH124) server", "L2TP/IPsec VPNs", "Cloud-based DB server", "Site-to-Site VPNs"],
+        },
+        {
+            title: "Zero-Touch™ Branch Office Deployment with Ansible",
+            idea: "Build an idempotent network where the core layer is heterogeneous, consisting of Cisco and Huawei devices. Configure the core layer to support VLAN trunking and inter-VLAN routing.",
+            objective: "To demonstrate mastery of **network automation** using idempotent tools like Ansible to deploy and configure branch office networks rapidly. This involves setting up a basic router and switch configuration (VLANs, 802.1X/NAC (MAB), OSPF) using a zero-touch approach. The final project validates the configuration state using automated verification and rollback scripts.",
+            tools: ["Ansible (router/switch templates)", "Cisco/Huawei IOS/VRP", "Python scripting", "VLANs", "802.1X/MAB", "OSPF"],
+        },
+        {
+            title: "Dual-Vendor (Cisco/Huawei) Enterprise Core",
+            idea: "Build an idempotent network where the core layer is heterogeneous, consisting of Cisco and Huawei devices. Configure the core layer to support VLAN trunking and inter-VLAN routing.",
+            objective: "To implement a **dual-vendor network core** capable of seamless interoperability between Cisco and Huawei devices. This involves configuring both Cisco and Huawei devices to support VLAN trunking and inter-VLAN routing. The project demonstrates proficiency in managing a heterogeneous network environment.",
+            tools: ["Cisco/Huawei Routers (OSPF, VLAN trunking)", "Red Hat (RH124) server", "Inter-VLAN routing", "EIGRP protocols"],
+        },
+        {
+            title: "Automated Warehouse & Logistics Hub Network",
+            idea: "Design a network for a large warehouse. Key features: high-availability wired and wireless network, support for IoT/OT (Operational Technology) devices (automated sorting machines/IoT), and configuration for back-up corporate network (WAN) connectivity.",
+            objective: "To design a resilient **unified network infrastructure** that supports high-availability wired and wireless access for both IT and Operational Technology (OT) functions. This involves deploying a secure wireless solution optimized for high-density IoT/OT devices, ensuring seamless connectivity for automated sorting machines. The project emphasizes integrating backup WAN connectivity to ensure continuous operations and inventory data flow.",
+            tools: ["Cisco Routers (WAN, VLANs)", "Cisco Switches", "Cisco WLC", "NPS/RADIUS", "Backup WAN connectivity", "IoT/OT network security"],
+        },
+    ],
+    "Cisco Cybersecurity Professional": [
+        {
+            title: "VLAN Fortress Lab",
+            idea: "Build a multi-VLAN SMB network (CCNA), deploy Snort IDS for monitoring (CyberOps), and test Nmap recon/exploits (CEH). Report detection rates.",
+            objective: "To design a **segmented VLAN network** for effective traffic isolation and security monitoring. This involves deploying Snort IDS for intrusion monitoring and conducting ethical hacking tests using Nmap. The final objective is to report on the detection accuracy and traffic isolation within the multi-VLAN topology.",
+            tools: ["Cisco Packet Tracer / GNS3", "Snort", "VLANs", "Nmap"],
+        },
+        {
+            title: "DMZ Breach Simulator:",
+            idea: "Design campus with DMZ (CCNA), set up ELK SIEM alerts (CyberOps), simulate Metasploit attacks on web servers (CEH). Analyze incident response.",
+            objective: "To build a **secure DMZ** environment for external-facing web servers and establish a monitoring system. This involves simulating common web server attacks using Metasploit and analyzing the incident response logs. The project focuses on setting up ELK SIEM alerts to detect and analyze web server attacks with correlated SIEM logs and IR findings.",
+            tools: ["Cisco Packet Tracer", "ELK Stack (Elasticsearch, Logstash, Kibana)", "Metasploit"],
+        },
+        {
+            title: "Red-Blue Routing Campus Clash:",
+            idea: "Configure inter-VLAN routing (CCNA), Wireshark-based SOC playbook (CyberOps), run 24-hour ethical pentest (CEH). Map MITRE ATT&CK tactics.",
+            objective: "To simulate a **Red-team vs Blue-team exercise** using the MITRE ATT&CK framework for incident response and defense. This involves configuring complex inter-VLAN routing and running a continuous ethical penetration test. The project emphasizes analyzing the full simulation results and mapping them to MITRE ATT&CK tactics for SOC evaluation.",
+            tools: ["Wireshark", "Cisco IOS", "Splunk", "Metasploit"],
+        },
+        {
+            title: "SMB Perimeter Defense",
+            idea: "Implement ACLs/NAT (CCNA), integrate Snort rules for threat hunting (CyberOps), exploit weak services with Burp Suite (CEH). Propose mitigations.",
+            objective: "To harden **SMB perimeter defense** against external threats by implementing Access Control Lists (ACLs) and Network Address Translation (NAT). This involves integrating Snort rules for effective threat hunting and exploiting weak SMB services using tools like Burp Suite. The final goal is to document intrusions, blocked exploits, and propose recommended security improvements for robust network defense.",
+            tools: ["Cisco IOS", "Snort", "Burp Suite", "Nmap"],
+        },
+        {
+            title: "Network Sentinel Drill:",
+            idea: "Create OSPF-routed topology (CCNA), automate alerts via Python SIEM (CyberOps), perform persistence via backdoors (CEH). Evaluate blue-team efficacy.",
+            objective: "To automate **SOC alerts and detection** processes and evaluate the efficacy of the blue-team defense through simulated attacks. This involves creating a complex OSPF-routed topology and setting up a Python SIEM for automated log analysis and alerting. The project culminates in performing persistence via backdoors and evaluating the blue-team's response and efficiency.",
+            tools: ["Cisco Packet Tracer", "Python", "SIEM", "Metasploit"],
+        },
+        {
+            title: "Hybrid Threat Lab",
+            idea: "Set up wireless VLANs (CCNA), monitor with Kibana dashboards (CyberOps), deauth and Wi-Fi exploits (CEH). Document lateral movement blocks.",
+            objective: "To integrate **wireless and wired network security** controls and actively hunt for Wi-Fi exploits and lateral movement attacks. This involves setting up separate wireless VLANs and monitoring the network using Kibana dashboards for real-time visibility. The final objective is to document effective lateral movement blocks and analyze the success rate of deauthentication and other Wi-Fi exploits.",
+            tools: ["Aircrack-ng", "Wireshark", "Kibana", "Cisco WLC"],
+        },
+        {
+            title: "Enterprise Hunt Exercise",
+            idea: "Build core/distribution/access layers (CCNA), log aggregation for IR (CyberOps), full recon-to-exfil chain (CEH). Timeline attack lifecycle.",
+            objective: "To conduct a **full kill-chain attack** simulation across an enterprise network and perform defensive monitoring and incident response. This involves building a multi-layered core/distribution/access network and aggregating all logs into an ELK stack for centralized analysis. The final output is a detailed timeline of attack stages, identified indicators of compromise (IOCs), and corresponding response efficiency.",
+            tools: ["Cisco Packet Tracer", "ELK Stack", "Nmap", "Metasploit"],
+        },
+        {
+            title: "Simulated Corporate Security Operations Center (SOC)",
+            idea: "This project involves creating a simulated SOC environment to monitor, detect, and respond to security incidents. You will use your CCNA skills to build the network, CyberOps skills to monitor and analyze traffic, and Ethical Hacker skills to simulate attacks.",
+            objective: "To build and operate a **virtual SOC integrating network monitoring, security analysis, and attack simulation** for incident response. This requires setting up network topology (CCNA skills) and deploying SIEM tools (CyberOps skills) for traffic analysis and detection. The core goal is demonstrating a realistic SOC workflow, including the detection, analysis, and mitigation of various cyber incidents.",
+            tools: ["Cisco Packet Tracer", "Splunk", "Snort", "Metasploit"],
+        },
+    ],
+    "Vulnerability Analysis & Penetration Testing Professional": [
+        {
+            title: "Penetration Testing Framework",
+            idea: "A Penetration Testing Framework is a set of tools and methodologies that simulate real-world cyberattacks to evaluate the security of networks, applications, and systems. This project involves creating or using a commercial framework to identify vulnerabilities and assess security.",
+            objective: "To automate **vulnerability discovery and exploitation** tasks, including mapping, exploitation, and reporting. This involves researching and customizing tools for different types of networks, web applications, and systems. The goal is to perform ethical hacking simulations and provide comprehensive reporting of vulnerabilities with suggested mitigations.",
+            tools: ["Python", "Nmap", "Burp Suite", "Metasploit", "Jupyter Notebook"],
+        },
+        {
+            title: "Enterprise Network Vulnerability Assessment",
+            idea: "Full vulnerability assessment of a simulated enterprise network containing Windows AD, Linux servers, network appliances, and internal web services. Includes authenticated and unauthenticated scanning.",
+            objective: "To perform a **comprehensive vulnerability assessment** of a simulated enterprise network to identify and prioritize risks. This involves planning, patching prioritization, and producing extensive technical reports with remediation recommendations. The project focuses on performing deep authenticated and unauthenticated scanning of Windows AD, Linux, and network appliances. The final outcome is a clear vulnerability report used for enterprise risk management.",
+            tools: ["Nessus", "OpenVAS", "Nmap", "Wireshark"],
+        },
+        {
+            title: "Active Directory Attack Detection",
+            idea: "Build and attack a lab AD environment (Domain Controller, file server, workstation). Students perform reconnaissance, Kerberos/LDAP enumeration, credential harvesting, lateral movement, and hardening configurations.",
+            objective: "To train practical skills in **Active Directory (AD) attack techniques** and understanding the defensive gaps required to detect them. This involves setting up a controlled lab environment to perform reconnaissance, enumeration, and credential harvesting attacks. The core goal is to understand and detect AD attack vectors, then propose effective AD hardening and monitoring solutions.",
+            tools: ["BloodHound", "Mimikatz", "Empire", "Splunk"],
+        },
+        {
+            title: "Web Shell & Post-Exploitation Forensics",
+            idea: "Simulate a compromised web server where students must discover a web shell, analyze persistence, extract data, and perform incident response forensics to remove backdoors and harden systems.",
+            objective: "To teach **post-exploitation detection, forensics, and incident response clean up procedures** in a web server environment. This involves performing deep digital forensics analysis to discover the web shell, analyze the attack's persistence mechanisms, and extract compromised data. The ultimate goal is to remove backdoors and harden systems against future attacks effectively.",
+            tools: ["Autopsy", "Volatility", "Wireshark", "File hashes", "Web shell detection", "Digital Forensics Investigation"],
+        },
+        {
+            title: "Cloud Configuration & Privilege Escalation",
+            idea: "Design a network for a factory that combines a corporate (IT) network and a factory floor (OT - Operational Technology) network. Create a firewall separating the two segments, applying strict access control rules (ACLs) to servers and controllers.",
+            objective: "To build understanding of **cloud misconfigurations** (IAM, storage permissions, server metadata exposure) and privilege escalation tactics. This involves setting up a lab environment to simulate various misconfigurations, expose sensitive server metadata, and practice extracting privileged data. The final project focuses on identifying and mitigating IAM design and privilege management issues in cloud environments.",
+            tools: ["AWS CLI", "Azure Security Center", "ScoutSuite"],
+        },
+        {
+            title: "Web Application Firewall (WAF) Evasion and Secure Coding Audit",
+            idea: "Perform black-box testing against a WAF-protected web app, identify bypass methods, and review backend code (white-box) for insecure coding.",
+            objective: "To demonstrate **web application defense** skills with an emphasis on developing secure code against common application-layer attacks. This involves conducting black-box testing to identify and bypass Web Application Firewall (WAF) rules and methods. The project requires auditing the application's backend code to identify insecure coding practices and provide remediation solutions.",
+            tools: ["OWASP ZAP", "Burp Suite", "ModSecurity"],
+        },
+        {
+            title: "API Security Assessment & Microservices Chain Attack",
+            idea: "Test a microservices architecture with multiple APIs and auth flows. Students find authorization flaws, SSRF, insecure deserialization, and chain multiple API flaws to access protected data.",
+            objective: "To implement the highest level of **API security** by detecting and mitigating complex microservices chain attacks. This involves testing authentication and authorization flows across multiple APIs to discover vulnerabilities like insecure deserialization and SSRF. The core goal is to chain multiple API flaws together to access protected data, emphasizing enhanced API authentication.",
+            tools: ["Postman", "Burp Suite", "OWASP Amass"],
+        },
+        {
+            title: "IoT & Embedded Device Audit",
+            idea: "Assess an IoT device (Raspberry Pi camera or simulated device), perform firmware extraction/analysis, local network tests, and API/firmware update checks for vulnerabilities.",
+            objective: "To improve the **security of IoT and embedded devices** by identifying firmware and network vulnerabilities and providing mitigation strategies. This involves performing firmware extraction and analysis, local network testing, and checking for API/firmware update vulnerabilities. The final goal is to enhance the overall network security and device integrity of the embedded system.",
+            tools: ["Binwalk", "Wireshark", "Nmap", "Ghida"],
+        },
+        {
+            title: "Social Engineering & Phishing Simulation",
+            idea: "Plan and execute an ethical phishing awareness campaign in a lab environment. Design realistic phishing emails, track simulated clicks, and measure campaign effectiveness.",
+            objective: "To execute ethical **phishing campaigns** to assess user awareness and recommend training to improve overall security posture. This involves designing realistic phishing emails, tracking simulated clicks, and meticulously measuring the campaign's effectiveness. The project emphasizes using social engineering techniques to gauge the human element in cybersecurity.",
+            tools: ["GoPhish", "SET (Social Engineering Toolkit)", "Mailtrap"],
+        },
+        {
+            title: "Threats detection using AI",
+            idea: "Build an AI model that analyzes network traffic logs and identifies suspicious activity. Continues ethical hacking with data science.",
+            objective: "To build an **AI model** that detects anomalies in network traffic and logs, identifying and flagging suspicious activity. This involves training the model on large datasets of network logs and traffic patterns to distinguish normal from malicious behavior. The project applies data science techniques to enhance threat intelligence and network security.",
+            tools: ["Python", "scikit-learn", "TensorFlow", "ELK Stack"],
+        },
+        {
+            title: "Web Attack using SQL Injection",
+            idea: "SQL Injection is a type of vulnerability that allows attackers to interfere with the queries that an application makes to its database. This project involves setting up a web application for SQL Injection attacks and creating scripts to exploit these vulnerabilities.",
+            objective: "To develop a practical understanding of **SQL Injection (SQLi) vulnerabilities** in web applications, demonstrating how attackers can use SQLi to interfere with database queries. This involves setting up a vulnerable web application, creating exploitation scripts, and understanding how to properly validate and sanitize input. The final project provides data extraction, manipulation, and mitigation techniques against SQLi.",
+            tools: ["DVWA", "SQLmap", "Burp Suite"],
+        },
+    ]
+};

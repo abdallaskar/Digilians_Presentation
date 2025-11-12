@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Applied Technologies — Digilians</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+    <aside class="sidebar">
+        <a href="logo.html" class="brand" style="text-decoration: none; cursor: pointer;">Digilians</a>
+        <nav class="side-nav">
+            <a class="side-link" href="agenda.html">Agenda</a>
+            <a class="side-link" href="agentic-ai.html">Agentic AI</a>
+            <a class="side-link" href="../index.html">Projects Statistics</a>
+            <div class="side-section">Domains</div>
+            <a class="side-link" href="ai.html">Artificial Intelligence</a>
+            <a class="side-link" href="software.html">Software Development</a>
+            <a class="side-link" href="data-analytics.html">Data Analytics</a>
+            <a class="side-link" href="infra-security.html">Infrastructure & Security</a>
+            <a class="side-link" href="digital-art.html">Digital Art</a>
+            <a class="side-link active" href="applied-tech.html">Applied Technologies</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header class="topbar">
+            <h1 class="page-title" id="categoryTitle">Applied Technologies</h1>
+            <nav class="top-nav" aria-label="Applied Tech Navigation">
+                <a href="applied-tech.html" class="top-link active">Profiles</a>
+                <a href="envirmental.html" class="top-link">Enviromental</a>
+            </nav>
+        </header>
+
+        <nav class="profile-navbar" aria-label="Applied Technologies Profiles Shortcuts">
+            <a href="#" data-name="Applied Technologies Agriculture Tech Specialist" data-metric-a="73"
+                data-metric-b="2">Agriculture Tech Specialist</a>
+        </nav>
+
+        <section class="section">
+            <div id="projectView" class="content-area" aria-live="polite">
+                <!-- JS will write the selected profile/project name here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/applied-tech-projects.js"></script>
+    <script>
+        // Profile navbar behavior with project cards
+        window.addEventListener('DOMContentLoaded', function () {
+            const profileNav = document.querySelector('.profile-navbar');
+            const projectView = document.getElementById('projectView');
+            if (!profileNav || !projectView) return;
+
+            const links = Array.from(profileNav.querySelectorAll('a'));
+
+            function clearActive() {
+                links.forEach(l => l.classList.remove('active'));
+            }
+
+            function createProjectCard(project, index) {
+                return `
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <h3>${project.title}</h3>
+                        </div>
+                        
+                        <div class="project-section">
+                            <div class="project-section-title">💡 Project Idea</div>
+                            <div class="project-section-content">${project.idea}</div>
+                        </div>
+                        
+                        <div class="project-section">
+                            <div class="project-section-title">🎯 Objective</div>
+                            <ul class="project-objectives">
+                                ${project.objective.split(/[.!?]+/).filter(s => s.trim()).map(sentence =>
+                    `<li>${sentence.trim()}.</li>`
+                ).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="project-section">
+                            <div class="project-section-title">🛠️ Tools & Technologies</div>
+                            <div class="project-tools">
+                                ${project.tools.map(tool => `<span class="tool-tag">${tool}</span>`).join('')}
+                            </div>
+                        </div>
+                        ${project.students || project.labs ? `
+                        <div class="project-stats">
+                            ${project.students ? `<div class="project-stat">
+                                <span>👥 Students:</span>
+                                <span class="project-stat-value">${project.students}</span>
+                            </div>` : ''}
+                            ${project.labs ? `<div class="project-stat">
+                                <span>🔬 Labs:</span>
+                                <span class="project-stat-value">${project.labs}</span>
+                            </div>` : ''}
+                        </div>` : ''}
+                    </div>
+                `;
+            }
+
+            function showProfileProjects(link) {
+                const profileName = link.dataset.name || link.textContent.trim();
+                const projects = appliedTechProjects[profileName] || [];
+
+                if (projects.length === 0) {
+                    projectView.innerHTML = `
+                        <div style="text-align: center; padding: 60px 20px; color: var(--muted);">
+                            <h2 style="margin-bottom: 12px; color: var(--text);">${profileName}</h2>
+                            <p>Projects coming soon...</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const projectsHTML = projects.map((project, index) =>
+                    createProjectCard(project, index)
+                ).join('');
+
+                projectView.innerHTML = `<div class="projects-grid">${projectsHTML}</div>`;
+            }
+
+            // Initialize: make first profile active
+            if (links.length > 0) {
+                const first = links[0];
+                first.classList.add('active');
+                try {
+                    first.setAttribute('tabindex', '0');
+                    first.focus();
+                } catch (e) { }
+                showProfileProjects(first);
+            }
+
+            // Click handlers
+            links.forEach(link => {
+                link.addEventListener('click', function (ev) {
+                    ev.preventDefault();
+                    clearActive();
+                    link.classList.add('active');
+                    showProfileProjects(link);
+                });
+                link.addEventListener('keydown', function (ev) {
+                    if (ev.key === 'Enter' || ev.key === ' ') {
+                        ev.preventDefault();
+                        link.click();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

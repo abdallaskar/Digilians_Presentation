@@ -1,0 +1,201 @@
+/* Digital Forensics & Computational Journalism Page Styles */
+
+:root {
+    --primary: #2563eb;
+    /* blue-600 */
+    --secondary: #0ea5e9;
+    /* cyan-500 */
+    --accent: #10b981;
+    /* emerald-500 */
+    --text: #1e293b;
+    /* slate-800 */
+    --border: #e2e8f0;
+    /* gray-200 */
+    --card-bg: #ffffff;
+    --bg: #f8fafc;
+    /* light slate */
+}
+
+/* Page Header */
+.cj-header {
+    text-align: center;
+    /* padding: 24px 20px 12px 20px;
+    background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%); */
+    border-radius: 14px;
+    margin: 0 5px 10px 5px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.cj-title {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 30px;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+    color: var(--secondary);
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0;
+    letter-spacing: -0.3px;
+}
+
+/* Container */
+.cj-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px 24px 40px 24px;
+    overflow-y: auto;
+    max-height: calc(100vh - 220px);
+    background-color: var(--bg);
+}
+
+/* Module Section */
+.module-section {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 34px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.module-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: var(--secondary);
+}
+
+/* Module Title */
+.module-title {
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+    border-left: 4px solid var(--accent);
+    padding-left: 10px;
+}
+
+/* Module Content */
+.module-content {
+    padding-left: 8px;
+}
+
+.module-list {
+    list-style: decimal;
+    padding-left: 24px;
+    margin: 0;
+}
+
+.module-list li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.module-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Tools & Assessment Text */
+.module-content p {
+    margin-top: 12px;
+    font-size: 15px;
+    color: #475569;
+    background: #f1f5f9;
+    border-left: 3px solid var(--secondary);
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+/* Color Variations for Modules */
+.module-section:nth-child(1) .module-title {
+    color: #1e40af;
+}
+
+.module-section:nth-child(2) .module-title {
+    color: #0369a1;
+}
+
+.module-section:nth-child(3) .module-title {
+    color: #047857;
+}
+
+.module-section:nth-child(4) .module-title {
+    color: #7c3aed;
+}
+
+.module-section:nth-child(5) .module-title {
+    color: #b91c1c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cj-title {
+        font-size: 26px;
+        margin-bottom: 6px;
+    }
+
+    .page-subtitle {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+
+    .cj-container {
+        padding: 0 16px 30px 16px;
+    }
+
+    .module-section {
+        padding: 22px 26px;
+        margin-bottom: 18px;
+    }
+
+    .module-title {
+        font-size: 18px;
+        margin-bottom: 14px;
+    }
+
+    .module-list {
+        padding-left: 20px;
+    }
+
+    .module-list li {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cj-title {
+        font-size: 22px;
+    }
+
+    .page-subtitle {
+        font-size: 18px;
+    }
+
+    .module-section {
+        padding: 16px 20px;
+    }
+
+    .module-title {
+        font-size: 16px;
+    }
+
+    .module-list {
+        padding-left: 18px;
+    }
+
+    .module-list li {
+        font-size: 14px;
+    }
+
+    .module-content p {
+        font-size: 13.5px;
+    }
+}

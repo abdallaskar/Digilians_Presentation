@@ -1,0 +1,231 @@
+/* ----------------------------------------
+   Agentic AI Page - Modern Two Column Design
+   ---------------------------------------- */
+
+/* Root Theme Variables */
+:root {
+    --bg: #f9fafb;
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --border: rgba(0, 0, 0, 0.1);
+    --text: #111827;
+    --primary: #2563eb;
+    --primary-dark: #1e3a8a;
+    --shadow: rgba(0, 0, 0, 0.08);
+    --radius: 14px;
+    --font-main: 'Inter', sans-serif;
+}
+
+/* Page Background */
+body {
+    font-family: var(--font-main);
+    background: linear-gradient(135deg, #eef2ff 0%, #f9fafb 100%);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Title */
+.agentic-title {
+    color: var(--primary-dark);
+    font-weight: 800;
+    font-size: 38px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    /* margin: 40px 0 24px; */
+    text-shadow: 0 2px 4px rgba(37, 99, 235, 0.15);
+}
+
+/* Two Column Container */
+.agentic-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 0 24px 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+    height: auto;
+    /* changed from fixed height */
+    /* overflow: hidden; */
+    overflow: visible;
+    /* allow full content */
+}
+
+/* Column Layout */
+.column-left,
+.column-right {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Info Box Styling */
+.info-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    box-shadow: 0 8px 24px var(--shadow);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary) 0%, #60a5fa 100%);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+}
+
+.info-box:hover {
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.15);
+    transform: translateY(-4px);
+}
+
+/* Info Header with Bullet */
+.info-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.info-bullet {
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: -2px;
+}
+
+.info-title {
+    color: var(--primary-dark);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0;
+    flex: 1;
+}
+
+/* Descriptions */
+.info-description {
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0;
+    padding-left: 36px;
+}
+
+/* Lists Shared Style */
+.track-list,
+.focus-list,
+.tools-list {
+    margin: 0;
+    padding-left: 52px;
+}
+
+/* Track List */
+.track-list li,
+.focus-list li {
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.track-list li:hover,
+.focus-list li:hover {
+    color: var(--primary);
+}
+
+/* Tools List */
+.tools-list {
+    list-style: none;
+    padding-left: 36px;
+}
+
+.tools-list li {
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: transform 0.2s ease;
+}
+
+.tools-list li:hover {
+    transform: translateX(4px);
+}
+
+.tool-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.tool-content {
+    flex: 1;
+}
+
+.tools-list strong {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .agentic-two-column {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+    }
+
+    .column-left,
+    .column-right {
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .agentic-title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .agentic-two-column {
+        padding: 0 16px 40px;
+        gap: 16px;
+    }
+
+    .info-box {
+        padding: 20px 24px;
+    }
+
+    .info-title {
+        font-size: 16px;
+    }
+
+    .info-description,
+    .track-list li,
+    .focus-list li,
+    .tools-list li {
+        font-size: 14px;
+    }
+
+    .tool-icon {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digilians — Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <aside class="sidebar">
+        <a href="html/logo.html" class="brand"
+            style="text-decoration: none; cursor: pointer; padding-bottom: 40px;">Digilians</a>
+        <nav class="side-nav">
+            <a class="side-link" href="html/agenda.html">Agenda</a>
+            <a class="side-link" href="html/agentic-ai.html">Agentic AI</a>
+            <a class="side-link active" href="index.html">Projects Statistics</a>
+            <div class="side-section">Domains</div>
+            <a class="side-link" href="html/ai.html">Artificial Intelligence</a>
+            <a class="side-link" href="html/software.html">Software Development</a>
+            <a class="side-link" href="html/data-analytics.html">Data Analytics</a>
+            <a class="side-link" href="html/infra-security.html">Infrastructure & Security</a>
+            <a class="side-link" href="html/digital-art.html">Digital Art</a>
+            <a class="side-link" href="html/applied-tech.html">Applied Technologies</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header class="topbar">
+            <h1 class="page-title">Overview</h1>
+        </header>
+
+        <section class="section">
+            <h1 style="margin-bottom: 0px; text-align: center;">Digilians Statistics</h1>
+            <div class="overview-container">
+                <div class="pie-chart-container">
+                    <svg id="pieChart" viewBox="0 0 2000 2000" class="pie-chart">
+                        <!-- Pie slices will be drawn here by JavaScript -->
+                    </svg>
+                    <div class="chart-center">
+                        <div class="total-students">2008</div>
+                        <div class="total-label">Total Students</div>
+                    </div>
+                </div>
+                <div class="legend-container">
+                    <div class="legend-item" data-track="ai">
+                        <div class="legend-color" style="background: #5b9dff;"></div>
+                        <div class="legend-info">
+                            <div class="legend-name">Artificial Intelligence</div>
+                            <div class="legend-stats">273 students • 54 projects</div>
+                        </div>
+                    </div>
+                    <div class="legend-item" data-track="software">
+                        <div class="legend-color" style="background: #22c55e;"></div>
+                        <div class="legend-info">
+                            <div class="legend-name">Software Development</div>
+                            <div class="legend-stats">446 students • 89 projects</div>
+                        </div>
+                    </div>
+                    <div class="legend-item" data-track="data">
+                        <div class="legend-color" style="background: #f59e0b;"></div>
+                        <div class="legend-info">
+                            <div class="legend-name">Data Analytics</div>
+                            <div class="legend-stats">512 students • 102 projects</div>
+                        </div>
+                    </div>
+                    <div class="legend-item" data-track="infra">
+                        <div class="legend-color" style="background: #ef4444;"></div>
+                        <div class="legend-info">
+                            <div class="legend-name">Infrastructure & Security</div>
+                            <div class="legend-stats">265 students • 53 projects</div>
+                        </div>
+                    </div>
+                    <div class="legend-item" data-track="art">
+                        <div class="legend-color" style="background: #a855f7;"></div>
+                        <div class="legend-info">
+                            <div class="legend-name">Digital Art</div>
+                            <div class="legend-stats">439 students • 87 projects</div>
+                        </div>
+                    </div>
+                    <div class="legend-item" data-track="applied">
+                        <div class="legend-color" style="background: #06b6d4;"></div>
+                        <div class="legend-info">
+                            <div class="legend-name">Applied Technologies</div>
+                            <div class="legend-stats">73 students • 14 projects</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Draw pie chart
+        window.addEventListener('DOMContentLoaded', function () {
+            const tracks = [
+                { name: 'Artificial Intelligence', shortName: 'AI', students: 273, projects: 54, color: '#5b9dff', url: 'html/ai.html' },
+                { name: 'Software Development', shortName: 'Software', students: 446, projects: 89, color: '#22c55e', url: 'html/software.html' },
+                { name: 'Data Analytics', shortName: 'Data', students: 512, projects: 102, color: '#f59e0b', url: 'html/data-analytics.html' },
+                { name: 'Infrastructure & Security', shortName: 'Infra/Sec', students: 265, projects: 53, color: '#ef4444', url: 'html/infra-security.html' },
+                { name: 'Digital Art', shortName: 'Digital Art', students: 439, projects: 87, color: '#a855f7', url: 'html/digital-art.html' },
+                { name: 'Applied Technologies', shortName: 'Applied Tech', students: 73, projects: 14, color: '#06b6d4', url: 'html/applied-tech.html' }
+            ];
+
+            const total = tracks.reduce((sum, track) => sum + track.students, 0);
+            const svg = document.getElementById('pieChart');
+            const centerX = 1000;
+            const centerY = 1000;
+            const radius = 950; // Increased radius for bigger slices
+            const labelRadius = 750; // Moved labels further out
+
+            let currentAngle = -90; // Start from top
+
+            tracks.forEach((track, index) => {
+                const percentage = track.students / total;
+                const angle = percentage * 360;
+                const endAngle = currentAngle + angle;
+                const midAngle = currentAngle + angle / 2;
+
+                // Create path for pie slice
+                const startRad = (currentAngle * Math.PI) / 180;
+                const endRad = (endAngle * Math.PI) / 180;
+
+                const x1 = centerX + radius * Math.cos(startRad);
+                const y1 = centerY + radius * Math.sin(startRad);
+                const x2 = centerX + radius * Math.cos(endRad);
+                const y2 = centerY + radius * Math.sin(endRad);
+
+                const largeArc = angle > 180 ? 1 : 0;
+
+                const pathData = [
+                    `M ${centerX} ${centerY}`,
+                    `L ${x1} ${y1}`,
+                    `A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2}`,
+                    'Z'
+                ].join(' ');
+
+                // Create group for slice and text
+                const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                group.setAttribute('class', 'pie-slice-group');
+                group.style.cursor = 'pointer';
+
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('d', pathData);
+                path.setAttribute('fill', track.color);
+                path.setAttribute('stroke', '#f0f4f8');
+                path.setAttribute('stroke-width', '3');
+                path.setAttribute('class', 'pie-slice');
+                path.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+                path.style.transformOrigin = '1000px 1000px';
+
+                // Calculate label position
+                const midRad = (midAngle * Math.PI) / 180;
+                const labelX = centerX + labelRadius * Math.cos(midRad);
+                const labelY = centerY + labelRadius * Math.sin(midRad);
+
+                // Create text label - Track name
+                const textName = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                textName.setAttribute('x', labelX);
+                textName.setAttribute('y', labelY - 25);
+                textName.setAttribute('text-anchor', 'middle');
+                textName.setAttribute('fill', '#1e293b');
+                textName.setAttribute('font-size', '70'); // Increased font size
+                textName.setAttribute('font-weight', '700');
+                textName.setAttribute('pointer-events', 'none');
+                textName.textContent = track.shortName;
+
+                // Create text label - Students count
+                const textStudents = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                textStudents.setAttribute('x', labelX);
+                textStudents.setAttribute('y', labelY + 35);
+                textStudents.setAttribute('text-anchor', 'middle');
+                textStudents.setAttribute('fill', '#1e293b');
+                textStudents.setAttribute('font-size', '55'); // Increased font size
+                textStudents.setAttribute('font-weight', '600');
+                textStudents.setAttribute('pointer-events', 'none');
+                textStudents.textContent = track.students + ' students';
+
+                // Add hover and click effects
+                group.addEventListener('mouseenter', function () {
+                    path.style.transform = 'scale(1.05)';
+                    path.style.opacity = '0.9';
+                });
+                group.addEventListener('mouseleave', function () {
+                    path.style.transform = 'scale(1)';
+                    path.style.opacity = '1';
+                });
+                group.addEventListener('click', function () {
+                    window.location.href = track.url;
+                });
+
+                group.appendChild(path);
+                group.appendChild(textName);
+                group.appendChild(textStudents);
+                svg.appendChild(group);
+
+                currentAngle = endAngle;
+            });
+
+            // Add click handlers to legend items
+            const legendItems = document.querySelectorAll('.legend-item');
+            const trackUrls = {
+                'ai': 'html/ai.html',
+                'software': 'html/software.html',
+                'data': 'html/data-analytics.html',
+                'infra': 'html/infra-security.html',
+                'art': 'html/digital-art.html',
+                'applied': 'html/applied-tech.html'
+            };
+
+            legendItems.forEach(item => {
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', function () {
+                    const trackKey = this.dataset.track;
+                    const url = trackUrls[trackKey];
+                    if (url) {
+                        window.location.href = url;
+                    }
+                });
+
+                // Add hover effect
+                item.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateX(5px)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+                item.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
